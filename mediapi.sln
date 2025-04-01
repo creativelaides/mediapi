@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BB516910-EE3A-4C4B-9238-8CB8820BD745}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MedApi", "MedApi", "{7F5EDB3B-32DE-4010-B8D3-6491B38486DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedApi.Domain", "src\MedApi\MedApi.Domain\MedApi.Domain.csproj", "{F1DD6EF6-C4F6-4E93-B314-A2223F04DB6F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1DD6EF6-C4F6-4E93-B314-A2223F04DB6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1DD6EF6-C4F6-4E93-B314-A2223F04DB6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1DD6EF6-C4F6-4E93-B314-A2223F04DB6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1DD6EF6-C4F6-4E93-B314-A2223F04DB6F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7F5EDB3B-32DE-4010-B8D3-6491B38486DC} = {BB516910-EE3A-4C4B-9238-8CB8820BD745}
+		{F1DD6EF6-C4F6-4E93-B314-A2223F04DB6F} = {7F5EDB3B-32DE-4010-B8D3-6491B38486DC}
+	EndGlobalSection
+EndGlobal
