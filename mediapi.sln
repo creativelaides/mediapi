@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MedApi", "MedApi", "{7F5EDB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedApi.Domain", "src\MedApi\MedApi.Domain\MedApi.Domain.csproj", "{F1DD6EF6-C4F6-4E93-B314-A2223F04DB6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedApi.Application", "src\MedApi\MedApi.Application\MedApi.Application.csproj", "{B77EEA85-22E7-481A-BAB6-F9311F3C49D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedApi.Infrastructure", "src\MedApi\MedApi.Infrastructure\MedApi.Infrastructure.csproj", "{700327A1-5893-48D7-AF5E-E66D92A2DC4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,9 +26,19 @@ Global
 		{F1DD6EF6-C4F6-4E93-B314-A2223F04DB6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1DD6EF6-C4F6-4E93-B314-A2223F04DB6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1DD6EF6-C4F6-4E93-B314-A2223F04DB6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B77EEA85-22E7-481A-BAB6-F9311F3C49D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B77EEA85-22E7-481A-BAB6-F9311F3C49D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B77EEA85-22E7-481A-BAB6-F9311F3C49D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B77EEA85-22E7-481A-BAB6-F9311F3C49D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{700327A1-5893-48D7-AF5E-E66D92A2DC4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{700327A1-5893-48D7-AF5E-E66D92A2DC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{700327A1-5893-48D7-AF5E-E66D92A2DC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{700327A1-5893-48D7-AF5E-E66D92A2DC4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7F5EDB3B-32DE-4010-B8D3-6491B38486DC} = {BB516910-EE3A-4C4B-9238-8CB8820BD745}
 		{F1DD6EF6-C4F6-4E93-B314-A2223F04DB6F} = {7F5EDB3B-32DE-4010-B8D3-6491B38486DC}
+		{B77EEA85-22E7-481A-BAB6-F9311F3C49D5} = {7F5EDB3B-32DE-4010-B8D3-6491B38486DC}
+		{700327A1-5893-48D7-AF5E-E66D92A2DC4E} = {7F5EDB3B-32DE-4010-B8D3-6491B38486DC}
 	EndGlobalSection
 EndGlobal
