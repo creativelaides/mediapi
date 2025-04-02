@@ -11,7 +11,7 @@ public static class AppointmentSeeder
         var faker = new Faker<Appointment>()
             .RuleFor(a => a.Id, _ => Guid.NewGuid())
             .RuleFor(a => a.AppointmentDate, f => f.Date.Soon(30))
-            .RuleFor(a => a.Status, _ => Status.Avalible)
+            .RuleFor(a => a.Status, _ => Status.Available)
             .RuleFor(a => a.DoctorId, f => f.PickRandom(doctors).Id)
             .RuleFor(a => a.PatientId, f => f.PickRandom(patients).Id);
 

@@ -1,11 +1,9 @@
 using MedApi.Domain;
+using MedApi.Application.Interfaces.Common;
 
 namespace MedApi.Application.Interfaces;
 
-public interface IAppointmentRepository
+public interface IAppointmentRepository : IRepository<Appointment>
 {
-    Task<Appointment?> GetByIdAsync(Guid id);
     Task<IEnumerable<Appointment>> GetAvailableAppointmentsAsync(Guid doctorId);
-    Task AddAsync(Appointment appointment);
-    Task UpdateAsync(Appointment appointment);
 }

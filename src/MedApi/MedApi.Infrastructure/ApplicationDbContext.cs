@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace MedApi.Infrastructure.Persistence;
+namespace MedApi.Infrastructure;
 
-public class ApplicationDbContext : DbContext
+public sealed class ApplicationDbContext : DbContext
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+    public ApplicationDbContext(DbContextOptions options) : base(options) { }
 
     public DbSet<Appointment> Appointments { get; set; }
     public DbSet<Doctor> Doctors { get; set; }
@@ -14,7 +14,7 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         base.OnModelCreating(modelBuilder);
     }
 }
