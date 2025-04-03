@@ -31,4 +31,10 @@ public class Patient : AggregateRoot
         ArgumentNullException.ThrowIfNull(appointment);
         _appointments.Add(appointment);
     }
+
+    // New method for authentication
+    public bool Authenticate(string identifier, DateTime dateOfBirth)
+    {
+        return Identifier == identifier && DateOfBirth.Date == dateOfBirth.Date;
+    }
 }

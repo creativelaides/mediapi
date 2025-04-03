@@ -1,7 +1,7 @@
 using MedApi.Application.Interfaces;
 using MedApi.Infrastructure.Repositories;
 
-namespace MedApi.Infrastructure.UnitOfWork;
+namespace MedApi.Infrastructure.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {

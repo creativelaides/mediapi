@@ -8,7 +8,7 @@ public class AppointmentConfiguration : IEntityTypeConfiguration<Appointment>
 {
     public void Configure(EntityTypeBuilder<Appointment> builder)
     {
-        builder.ToTable("Appointments");
+        builder.ToTable("appointments");
 
         builder.HasKey(a => a.Id);
 
@@ -18,6 +18,10 @@ public class AppointmentConfiguration : IEntityTypeConfiguration<Appointment>
         builder.Property(a => a.Status)
                .HasConversion<int>()
                .IsRequired();
+
+        builder.Property(a => a.Specialty)
+               .IsRequired()
+               .HasMaxLength(100);
 
         builder.HasOne(a => a.Doctor)
                .WithMany(d => d.Appointments)

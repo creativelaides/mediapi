@@ -6,11 +6,11 @@ namespace MedApi.Application.Appointments.Queries;
 
 public record GetAvailableAppointmentsQuery : IRequest<IEnumerable<Appointment>>
 {
-    public Guid DoctorId { get; }
+    public string Specialty { get; }
 
-    public GetAvailableAppointmentsQuery(Guid doctorId)
+    public GetAvailableAppointmentsQuery(string specialty)
     {
-        DoctorId = doctorId;
+        Specialty = specialty;
     }
 }
 
@@ -25,6 +25,6 @@ public class GetAvailableAppointmentsQueryHandler : IRequestHandler<GetAvailable
 
     public async Task<IEnumerable<Appointment>> Handle(GetAvailableAppointmentsQuery request, CancellationToken cancellationToken)
     {
-        return await _appointmentRepository.GetAvailableAppointmentsAsync(request.DoctorId);
+        return await _appointmentRepository.GetAvailableAppointmentsAsync(request.Specialty);
     }
 }

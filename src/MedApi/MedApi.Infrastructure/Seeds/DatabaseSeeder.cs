@@ -1,4 +1,3 @@
-using MedApi.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace MedApi.Infrastructure.Seeds;

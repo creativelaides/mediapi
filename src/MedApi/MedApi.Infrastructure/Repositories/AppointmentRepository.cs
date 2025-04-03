@@ -1,5 +1,5 @@
-using MedApi.Application.Interfaces;
 using MedApi.Domain;
+using MedApi.Application.Interfaces;
 using MedApi.Domain.ObjectsValues;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,9 +9,13 @@ public class AppointmentRepository : Repository<Appointment>, IAppointmentReposi
 {
     public AppointmentRepository(ApplicationDbContext context) : base(context) { }
 
-    public async Task<IEnumerable<Appointment>> GetAvailableAppointmentsAsync(Guid doctorId)
+    public async Task<IEnumerable<Appointment>> GetAvailableAppointmentsAsync(string specialty)
     {
-        return await _dbSet.Where(a => a.DoctorId == doctorId && a.Status == Status.Available)
-                           .ToListAsync();
+        return await _dbSet
+            .Include(a => a.Doctor)
+            .Where(a => a.Specialty == specialty && a.Status == Status.Available)
+            .OrderBy(a => a.AppointmentDate)
+            .Take(5)
+            .ToListAsync();
     }
 }

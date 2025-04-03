@@ -5,5 +5,5 @@ namespace MedApi.Application.Interfaces;
 
 public interface IAppointmentRepository : IRepository<Appointment>
 {
-    Task<IEnumerable<Appointment>> GetAvailableAppointmentsAsync(Guid doctorId);
+    Task<IEnumerable<Appointment>> GetAvailableAppointmentsAsync(string specialty);
 }

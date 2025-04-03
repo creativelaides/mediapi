@@ -9,7 +9,13 @@ public abstract class AggregateRoot
     protected AggregateRoot()
     {
         Id = Guid.NewGuid();
-        CreatedAt = DateTime.UtcNow;
+        var now = DateTime.UtcNow;
+        CreatedAt = now;
+        UpdatedAt = now;
+    }
+
+    protected void SetUpdated()
+    {
         UpdatedAt = DateTime.UtcNow;
     }
 }

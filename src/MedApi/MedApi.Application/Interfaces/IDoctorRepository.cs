@@ -5,4 +5,5 @@ namespace MedApi.Application.Interfaces;
 
 public interface IDoctorRepository : IRepository<Doctor>
 {
+    Task<IEnumerable<Doctor>> GetBySpecialtyAsync(string specialty);
 }
