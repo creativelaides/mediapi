@@ -8,7 +8,7 @@ public class Patient : AggregateRoot
     public string? LastName { get; private set; }
     public string? Identifier { get; private set; }
     public string? Email { get; private set; }
-    public DateTime DateOfBirth { get; private set; }
+    public DateOnly DateOfBirth { get; private set; }
     public string? PhoneNumber { get; private set; }
 
     private readonly List<Appointment> _appointments = [];
@@ -17,7 +17,7 @@ public class Patient : AggregateRoot
     private Patient() { } // Constructor para EF Core
 
     // Constructor principal
-    public Patient(string firstName, string lastName, string identifier, string email, DateTime dateOfBirth, string phoneNumber)
+    public Patient(string firstName, string lastName, string identifier, string email, DateOnly dateOfBirth, string phoneNumber)
     {
         // Validaciones
         FirstName = firstName ?? throw new ArgumentException("First Name is required");
@@ -35,8 +35,8 @@ public class Patient : AggregateRoot
     }
 
     // New method for authentication
-    public bool Authenticate(string identifier, DateTime dateOfBirth)
+    public bool Authenticate(string identifier, DateOnly dateOfBirth)
     {
-        return Identifier == identifier && DateOfBirth.Date == dateOfBirth.Date;
+        return Identifier == identifier && DateOfBirth == dateOfBirth;
     }
 }

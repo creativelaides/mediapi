@@ -11,9 +11,9 @@ public static class PatientSeeder
             .CustomInstantiator(f => new Patient(
                 f.Name.FirstName(),
                 f.Name.LastName(),
-                f.Random.Replace("##########"),
+                f.Random.Replace("1#########"),
                 f.Internet.Email(),
-                f.Date.Past(40, DateTime.UtcNow.AddYears(-18)),
+                DateOnly.FromDateTime(f.Date.Past(40, DateTime.UtcNow.AddYears(-18))),
                 f.Phone.PhoneNumber()
             ))
             .RuleFor(p => p.Id, _ => Guid.NewGuid());

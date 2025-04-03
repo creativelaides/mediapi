@@ -27,7 +27,11 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        var patient = await _patientRepository.AuthenticateAsync(request.Identifier, request.DateOfBirth);
+        var patient = await _patientRepository.AuthenticateAsync(
+            request.Identifier, 
+            request.DateOfBirth
+        );
+
         if (patient == null)
             return Unauthorized("Invalid credentials");
 

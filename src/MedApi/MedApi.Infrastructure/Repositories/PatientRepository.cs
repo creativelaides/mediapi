@@ -13,10 +13,10 @@ public class PatientRepository : Repository<Patient>, IPatientRepository
         return await _dbSet.FirstOrDefaultAsync(p => p.Identifier == identifier);
     }
 
-    public async Task<Patient?> AuthenticateAsync(string identifier, DateTime dateOfBirth)
+    public async Task<Patient?> AuthenticateAsync(string identifier, DateOnly dateOfBirth)
     {
         return await _dbSet.FirstOrDefaultAsync(p => 
             p.Identifier == identifier && 
-            p.DateOfBirth.Date == dateOfBirth.Date);
+            p.DateOfBirth == dateOfBirth);
     }
 }

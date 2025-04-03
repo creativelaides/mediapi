@@ -16,6 +16,7 @@ public static class DependencyInjection
             .AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                // options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
             });
 
         // Configuración de CORS para frontend (React/Angular)
