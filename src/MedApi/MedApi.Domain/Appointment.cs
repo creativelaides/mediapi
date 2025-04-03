@@ -12,14 +12,18 @@ public class Appointment : AggregateRoot
     public Guid DoctorId { get; private set; }
     public Doctor? Doctor { get; private set; }
 
-    public Guid PatientId { get; private set; } // Cambiado a no-nullable
-    public Patient? Patient { get; private set; } // Cambiado a no-nullable
+    public Guid PatientId { get; private set; }
+    public Patient? Patient { get; private set; }
 
-    private Appointment() { } // Constructor para EF Core
+    protected Appointment() { }
 
-    public Appointment(DateTime appointmentDate, string specialty, Doctor doctor, Patient patient)
+    public Appointment(
+        DateTime appointmentDate,
+        string specialty,
+        Doctor doctor,
+        Patient patient)
     {
-        if (doctor is null || patient is null)
+        if (doctor == null || patient == null)
             throw new ArgumentException("Doctor and Patient are required");
 
         AppointmentDate = appointmentDate;
@@ -28,7 +32,7 @@ public class Appointment : AggregateRoot
         Doctor = doctor;
         DoctorId = doctor.Id;
         Patient = patient;
-        PatientId = patient.Id; // Asignación directa ya que no es nullable
+        PatientId = patient.Id;
     }
     public void AssignPatient(Patient patient)
     {

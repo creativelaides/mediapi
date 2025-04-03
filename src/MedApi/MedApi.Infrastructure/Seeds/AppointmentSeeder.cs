@@ -6,17 +6,24 @@ namespace MedApi.Infrastructure.Seeds;
 
 public static class AppointmentSeeder
 {
-    public static List<Appointment> GenerateAppointments(int count, List<Doctor> doctors, List<Patient> patients)
+    public static List<Appointment> GenerateAppointments(
+        int count,
+        List<Doctor> doctors,
+        List<Patient> patients)
     {
         var specialties = new[] { "Medicina General", "Odontología" };
-        
+
         var faker = new Faker<Appointment>()
+            .CustomInstantiator(f => new Appointment(
+                f.Date.Soon(30),
+                f.PickRandom(specialties),
+                f.PickRandom(doctors.Where(d =>
+                    d.Specialization == "Medicina General" ||
+                    d.Specialization == "Odontología")),
+                f.PickRandom(patients)
+            ))
             .RuleFor(a => a.Id, _ => Guid.NewGuid())
-            .RuleFor(a => a.AppointmentDate, f => f.Date.Soon(30))
-            .RuleFor(a => a.Status, _ => Status.Available)
-            .RuleFor(a => a.Specialty, f => f.PickRandom(specialties))
-            .RuleFor(a => a.DoctorId, f => f.PickRandom(doctors.Where(d => d.Specialization == specialties[0] || d.Specialization == specialties[1]).ToList()).Id)
-            .RuleFor(a => a.PatientId, f => f.PickRandom(patients).Id);
+            .RuleFor(a => a.Status, _ => Status.Available);
 
         return faker.Generate(count);
     }

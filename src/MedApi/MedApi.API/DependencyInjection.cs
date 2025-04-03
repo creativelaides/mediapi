@@ -62,8 +62,10 @@ public static class DependencyInjection
             });
         });
 
-        // Configuración de autenticación JWT
+        // Configuración JWT
         var jwtSettings = configuration.GetSection("JwtSettings");
+        var secretKey = jwtSettings["secretKey"] ?? throw new ArgumentNullException("JWT Secret Key is missing");
+
         services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -79,8 +81,7 @@ public static class DependencyInjection
                 ValidateIssuerSigningKey = true,
                 ValidIssuer = jwtSettings["validIssuer"],
                 ValidAudience = jwtSettings["validAudience"],
-                IssuerSigningKey = new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes(jwtSettings["secretKey"]!))
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
             };
         });
 

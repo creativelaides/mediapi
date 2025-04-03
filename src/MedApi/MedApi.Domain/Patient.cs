@@ -16,8 +16,10 @@ public class Patient : AggregateRoot
 
     private Patient() { } // Constructor para EF Core
 
+    // Constructor principal
     public Patient(string firstName, string lastName, string identifier, string email, DateTime dateOfBirth, string phoneNumber)
     {
+        // Validaciones
         FirstName = firstName ?? throw new ArgumentException("First Name is required");
         LastName = lastName ?? throw new ArgumentException("Last Name is required");
         Identifier = identifier ?? throw new ArgumentException("Identifier is required");
