@@ -1,6 +1,8 @@
 using MedApi.Application.Interfaces;
+using MedApi.Domain.Exceptions;
 using MedApi.Domain.ObjectsValues;
 using MediatR;
+
 
 namespace MedApi.Application.Appointments.Commands;
 
@@ -34,10 +36,10 @@ public class ReserveAppointmentCommandHandler : IRequestHandler<ReserveAppointme
 
     public async Task<bool> Handle(ReserveAppointmentCommand request, CancellationToken cancellationToken)
     {
-        var appointment = await _appointmentRepository.GetByIdAsync(request.AppointmentId);
+        var appointment = await _appointmentRepository.GetByIdWithDetailsAsync(request.AppointmentId);
         var patient = await _patientRepository.GetByIdentifierAsync(request.PatientIdentifier);
 
-        if (appointment is null || patient is null || appointment.Status != Status.Available)
+        if (appointment == null || patient == null || appointment.Status != Status.Available)
             return false;
 
         try
@@ -45,14 +47,14 @@ public class ReserveAppointmentCommandHandler : IRequestHandler<ReserveAppointme
             appointment.AssignPatient(patient);
             appointment.Reserve();
 
-            _appointmentRepository.Update(appointment);
             await _unitOfWork.SaveChangesAsync();
-
             return true;
         }
-        catch (InvalidOperationException)
+        catch (ConcurrencyException) // Capturamos nuestra propia excepción
         {
+            // Loggear el error aquí
             return false;
         }
+
     }
 }

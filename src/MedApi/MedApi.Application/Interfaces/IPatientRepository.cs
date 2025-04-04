@@ -7,4 +7,5 @@ public interface IPatientRepository : IRepository<Patient>
 {
     Task<Patient?> GetByIdentifierAsync(string identifier);
     Task<Patient?> AuthenticateAsync(string identifier, DateOnly dateOfBirth);
+    Task<Patient?> GetPatientWithAppointmentsAsync(Guid patientId);
 }

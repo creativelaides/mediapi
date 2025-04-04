@@ -1,5 +1,7 @@
 using MedApi.Application.Interfaces;
+using MedApi.Domain.Exceptions;
 using MedApi.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedApi.Infrastructure.Repositories;
 
@@ -19,5 +21,17 @@ public class UnitOfWork : IUnitOfWork
         Patients = new PatientRepository(_context);
     }
 
-    public async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync();
+    public async Task<int> SaveChangesAsync()
+    {
+        try
+        {
+            return await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            throw new ConcurrencyException("Concurrency conflict occurred", ex);
+        }
+    }
+
+
 }
